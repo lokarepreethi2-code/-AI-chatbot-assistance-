@@ -1,0 +1,25 @@
+[
+  {
+    "intent": "greeting",
+    "examples": [
+      "hello",
+      "hi there",
+      "hey",
+      "is anyone there?"
+    ],
+    "responses": [
+      "Hello! I am your AI assistant. How can I help you today?"
+    ]
+  },
+  {
+    "intent": "bot_purpose",
+    "examples": [
+      "what can you do?",
+      "how can you help me?",
+      "what is your job?"
+    ],
+    "responses": [
+      "I am trained to read your uploaded PDFs using RAG, query database records via spreadsheets, and answer your questions instantly!"
+    ]
+  }
+]
