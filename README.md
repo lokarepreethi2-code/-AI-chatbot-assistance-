@@ -202,3 +202,74 @@ This document outlines the request and response structures for the AI Chatbot ba
 * **Deliverables:** 
     * Technical report deployment documents.
     * Interactive version-controlled file hierarchy trees.
+
+---
+
+### 📂 Repository File System Architecture Diagram (Task 5)
+Below is the directory structural tree designed for submission validation tracking:
+
+```text
+-AI-chatbot-assistance/
+│
+├── data/
+│   └── sample_intents.json
+│
+├── app.py
+├── index.html
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+---
+
+### 🌐 Frontend User Interface Source Code (Task 4 Component)
+Below is the complete standalone HTML structure designed for the chatbot interface:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .chat-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .chat-box { height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; margin-bottom: 20px; border-radius: 4px; background: #fafafa; }
+        .input-area { display: flex; gap: 10px; }
+        input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .loading { display: none; color: #666; font-style: italic; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>AI Chatbot Interface</h2>
+        <div class="chat-box" id="chatBox"></div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type your prompt here...">
+            <button onclick="sendPrompt()">Submit</button>
+        </div>
+        <div class="loading" id="loadingIndicator">AI is thinking...</div>
+    </div>
+    <script>
+        function sendPrompt() {
+            const input = document.getElementById('userInput');
+            const chatBox = document.getElementById('chatBox');
+            const loading = document.getElementById('loadingIndicator');
+            if (!input.value.trim()) return;
+            chatBox.innerHTML += `<p><strong>You:</strong> ${input.value}</p>`;
+            loading.style.display = 'block';
+            setTimeout(() => {
+                loading.style.display = 'none';
+                chatBox.innerHTML += `<p><strong>AI:</strong> Interface connected! Ready to process inputs.</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+                input.value = '';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+```
