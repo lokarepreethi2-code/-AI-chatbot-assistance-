@@ -15,6 +15,36 @@ An end-to-end AI chatbot application featuring a decoupled frontend interface, a
 * **Deliverables:** * Architecture Diagram
   * Component Explanation Document
 
+### 📊 System Architecture Diagram
+Below is the system boundary map showing how data flows between your components:
+
+```mermaid
+graph LR
+    subgraph Client Layer
+        A[Frontend Interface / index.html]
+    end
+    
+    subgraph Server Layer
+        B[Backend API Server / app.py]
+    end
+    
+    subgraph AI & Data Layers
+        C[AI Model Engine / LLM API]
+        D[Database / JSON Data Store]
+    end
+
+    A <-->|HTTP POST/GET Requests| B
+    B <-->|API Calls| C
+    B <-->|Read/Write Data| D
+```
+
+### 📄 Component Explanation Document
+
+* **Client Layer (`index.html`)**: The user interface where users input prompts, click submit, view loading animations, and read the chatbot responses.
+* **Server Layer (`app.py`)**: The central logic gates built with Python Flask. It accepts network requests from the client, validates inputs, communicates with the data layer, and serves data securely.
+* **AI Model Layer**: The core intelligence mechanism processing incoming human language strings to generate contextual chat answers.
+* **Database Layer (`data/`)**: The persistent storage space containing raw datasets, chat logs, user information records, and feedback metrics.
+s
 ### Task 2: Design API Endpoints
 * **Objective:** Create APIs that expose AI functionality.
 * **Proposed Endpoints:**
