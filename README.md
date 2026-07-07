@@ -168,3 +168,37 @@ This document outlines the request and response structures for the AI Chatbot ba
   }
 }
 ```
+
+---
+
+### Task 3: Develop Backend Server
+* **Objective:** Build the server layer.
+* **Activities:** 
+    * Set up routes using Python Flask framework.
+    * Handle HTTP requests securely.
+    * Return structured JSON responses using `jsonify()`.
+* **Deliverables:** 
+    * Running backend server code (`app.py`).
+    * Source code repository setup.
+
+---
+
+### Task 4: Create Frontend Interface
+* **Objective:** Develop a user interface for interacting with the AI system.
+* **Activities:** 
+    * Build core input text boxes and interactive submit buttons.
+    * Establish persistent response display areas.
+    * Configure visual loading indicators for AI latency states.
+* **Deliverables:** 
+    * Functional client-side web application interface (`index.html`).
+
+---
+
+### Task 5: Documentation and Demonstration
+* **Objective:** Document architecture configurations and publish data schema sets.
+* **Activities:** 
+    * Model explicit endpoint schemas.
+    * Map folder trees for structured codebases.
+* **Deliverables:** 
+    * Technical report deployment documents.
+    * Interactive version-controlled file hierarchy trees.
