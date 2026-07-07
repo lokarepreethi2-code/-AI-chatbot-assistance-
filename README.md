@@ -300,3 +300,34 @@ Display server responses on the interface.
 ### Deliverables
 Integrated application.
 
+
+---
+
+## Task 4: Documentation and Demonstration
+
+### 🏗️ System Architecture Diagram
+
+Below is the high-level architecture diagram showing how the Frontend, Backend, and AI Model components interact across the system:
+
+```mermaid
+graph TD
+    User([👤 User / Client UI]) -->|Sends Message| API[⚡ Backend API / app.py]
+    API -->|Sends Prompt| LLM[🧠 AI Chatbot Model / LLM]
+    LLM -->|Generates Text| API
+    API -->|Returns JSON Response| User
+    
+    style User fill:#f9f,stroke:#333,stroke-width:2px
+    style API fill:#bbf,stroke:#333,stroke-width:2px
+    style LLM fill:#bfb,stroke:#333,stroke-width:2px
+```
+
+### 📹 Project Demonstration Video
+*⏳ Status: Video demonstration is currently being prepared and will be linked below upon final submission.*
+
+### 📂 Project Repository Structure
+
+*   📁 **`data/`**: Dataset files and intent definitions.
+*   📁 **`deployment/`**: Configuration scripts and deployment documentation.
+*   📁 **`reports/`**: Technical evaluation reports and presentation slides.
+*   📁 **`src/`**: Core application source code, API definitions, and sequence diagrams.
+
