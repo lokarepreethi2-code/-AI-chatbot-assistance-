@@ -45,3 +45,96 @@ An end-to-end AI chatbot application featuring a decoupled frontend interface, a
   * Technical Report
   * Sequence Diagram
   * Demo Video
+
+---
+
+## 📄 API Specification Document
+
+This document outlines the request and response structures for the AI Chatbot backend endpoints. All requests and responses use the `application/json` content type.
+
+### 1. Send Prompt to AI
+* **Endpoint:** `/api/chat`
+* **Method:** `POST`
+
+**Request Body:**
+```json
+{
+  "user_id": "user_12345",
+  "prompt": "Hello! Can you explain what an API is?"
+}
+```
+**Response Body (200 OK):**
+```json
+{
+  "status": "success",
+  "response": "An API allows different software applications to communicate.",
+  "timestamp": "2026-07-07T20:53:00Z"
+}
+```
+
+### 2. Retrieve Conversations
+* **Endpoint:** `/api/history`
+* **Method:** `GET`
+
+**Response Body (200 OK):**
+```json
+{
+  "user_id": "user_12345",
+  "history": [
+    {
+      "role": "user",
+      "text": "Hello!"
+    },
+    {
+      "role": "assistant",
+      "text": "Hi there!"
+    }
+  ]
+}
+```
+
+### 3. Fetch User Information
+* **Endpoint:** `/api/users`
+* **Method:** `GET`
+
+**Response Body (200 OK):**
+```json
+{
+  "user_id": "user_12345",
+  "username": "lokarepreethi2"
+}
+```
+
+### 4. Store Ratings
+* **Endpoint:** `/api/feedback`
+* **Method:** `POST`
+
+**Request Body:**
+```json
+{
+  "conversation_id": "chat_9988",
+  "rating": 5,
+  "comments": "Great response!"
+}
+```
+**Response Body (201 Created):**
+```json
+{
+  "status": "feedback_saved"
+}
+```
+
+### 5. Health Check
+* **Endpoint:** `/api/health`
+* **Method:** `GET`
+
+**Response Body (200 OK):**
+```json
+{
+  "status": "healthy",
+  "services": {
+    "database": "connected",
+    "ai_engine": "operational"
+  }
+}
+```
