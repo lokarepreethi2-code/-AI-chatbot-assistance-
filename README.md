@@ -273,48 +273,31 @@ Below is the complete standalone HTML structure designed for the chatbot interfa
 </body>
 </html>
 ```
-    <script>
-        async function sendPrompt() {
-            const input = document.getElementById('userInput');
-            const chatBox = document.getElementById('chatBox');
-            const loading = document.getElementById('loadingIndicator');
-            const userText = input.value.trim();
-            
-            if (!userText) return;
-            
-            // Display user message
-            chatBox.innerHTML += `<p><strong>You:</strong> ${userText}</p>`;
-            input.value = '';
-            loading.style.display = 'block';
-            chatBox.scrollTop = chatBox.scrollHeight;
-            
-            try {
-                // EXACT IMPLEMENTATION FROM YOUR PPT SLIDE
-                const response = await fetch("/api/chat", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        prompt: userText
-                    })
-                });
-                
-                const data = await response.json();
-                
-                // Display server responses on the interface
-                loading.style.display = 'none';
-                if (data.response) {
-                    chatBox.innerHTML += `<p><strong>AI:</strong> ${data.response}</p>`;
-                } else {
-                    chatBox.innerHTML += `<p><strong>AI:</strong> Error retrieving response.</p>`;
-                }
-            } catch (error) {
-                loading.style.display = 'none';
-                chatBox.innerHTML += `<p><strong>AI:</strong> Server response received successfully (Connection Active).</p>`;
-            }
-            
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-    </script>
-s
+
+---
+
+# Week 4
+
+## Task 1: Implement Client-Server Communication
+
+### Objective
+Connect the frontend to backend APIs.
+
+### Activities
+Use:
+```javascript
+fetch("/api/chat", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        prompt: userInput
+    })
+});
+```
+Display server responses on the interface.
+
+### Deliverables
+Integrated application.
+
