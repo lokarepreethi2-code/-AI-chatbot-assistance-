@@ -205,23 +205,22 @@ This document outlines the request and response structures for the AI Chatbot ba
 
 ---
 
-### 📂 Repository File System Architecture Diagram (Task 5)
-Below is the directory structural tree designed for submission validation tracking:
+### 📂 Repository Directory Layout
 
 ```text
 -AI-chatbot-assistance/
-│
+├── README.md
 ├── data/
 │   └── sample_intents.json
-│
-├── app.py
-├── index.html
-├── .gitignore
-├── LICENSE
-└── README.md
+├── src/
+│   ├── app.py
+│   └── index.html
+├── reports/
+│   └── README.md
+└── deployment/
+    └── README.md
 ```
 
----
 
 ### 🌐 Frontend User Interface Source Code (Task 4 Component)
 Below is the complete standalone HTML structure designed for the chatbot interface:
