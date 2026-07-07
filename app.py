@@ -1,7 +1,15 @@
+import os
 from flask import Flask, request, jsonify
 from datetime import datetime
+from anthropic import Anthropic
 
 app = Flask(__name__)
+
+# --- AI Model client setup ---
+# Reads the API key from an environment variable (never hardcode keys in code!)
+client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+AI_MODEL = "claude-sonnet-4-6"
+
 
 # 1. Send Prompt to AI (/api/chat)
 @app.route('/api/chat', methods=['POST'])
@@ -9,17 +17,32 @@ def chat():
     data = request.get_json()
     if not data or 'prompt' not in data:
         return jsonify({"status": "error", "message": "Missing prompt"}), 400
-    
+
     user_prompt = data.get('prompt')
-    
-    # Mock AI response logic
-    ai_response = f"This is a mock AI response to your prompt: '{user_prompt}'"
-    
+
+    try:
+        # --- Real AI Model call (replaces the old mock logic) ---
+        message = client.messages.create(
+            model=AI_MODEL,
+            max_tokens=1000,
+            messages=[
+                {"role": "user", "content": user_prompt}
+            ]
+        )
+        ai_response = message.content[0].text
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": f"AI model request failed: {str(e)}"
+        }), 502
+
     return jsonify({
         "status": "success",
         "response": ai_response,
         "timestamp": datetime.utcnow().isoformat() + "Z"
     }), 200
+
 
 # 2. Retrieve Conversations (/api/history)
 @app.route('/api/history', methods=['GET'])
@@ -32,6 +55,7 @@ def history():
         ]
     }), 200
 
+
 # 3. Fetch User Information (/api/users)
 @app.route('/api/users', methods=['GET'])
 def users():
@@ -41,6 +65,7 @@ def users():
         "email": "preethi@example.com"
     }), 200
 
+
 # 4. Store Ratings (/api/feedback)
 @app.route('/api/feedback', methods=['POST'])
 def feedback():
@@ -49,17 +74,19 @@ def feedback():
         "message": "Thank you for your rating."
     }), 201
 
+
 # 5. Health Check (/api/health)
 @app.route('/api/health', methods=['GET'])
 def health():
+    ai_status = "operational" if os.environ.get("ANTHROPIC_API_KEY") else "not_configured"
     return jsonify({
         "status": "healthy",
         "services": {
             "database": "connected",
-            "ai_engine": "operational"
+            "ai_engine": ai_status
         }
     }), 200
 
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-s
