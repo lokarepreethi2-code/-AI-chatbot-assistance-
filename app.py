@@ -4,6 +4,8 @@ from datetime import datetime
 from anthropic import Anthropic
 
 app = Flask(__name__)
+# Task 5: Store conversation history
+conversation_history = []
 
 # --- AI Model client setup ---
 # Reads the API key from an environment variable (never hardcode keys in code!)
@@ -30,6 +32,12 @@ def chat():
             ]
         )
         ai_response = message.content[0].text
+        # Task 5: Save prompt and response to history
+        chat_turn = {
+            "question": user_prompt,
+            "answer": ai_response
+        }
+        conversation_history.append(chat_turn)
 
     except Exception as e:
         return jsonify({
@@ -86,6 +94,13 @@ def health():
             "ai_engine": ai_status
         }
     }), 200
+# Task 5: Endpoint to retrieve conversation history
+@app.route('/api/history', methods=['GET'])
+def get_history():
+    return jsonify({
+        "status": "success",
+        "history": conversation_history
+    })
 
 
 if __name__ == '__main__':
