@@ -1,3 +1,7 @@
-# reports/
+# Reports and Presentations
 
-This folder contains the technical report and project documentation for the AI chatbot project.
+This directory holds the final evaluation deliverables for the internship project.
+
+## 📊 Deliverables
+* 📝 **Technical Report**: *[Link or upload your final PDF report here]*
+* 📉 **Presentation Slides**: *[Link or upload your PPTX project presentation here]*
