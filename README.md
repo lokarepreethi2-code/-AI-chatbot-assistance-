@@ -322,7 +322,13 @@ graph TD
 ```
 
 ### 📹 Project Demonstration Video
-*⏳ Status: Video demonstration is currently being prepared and will be linked below upon final submission.*
+
+
+https://github.com/user-attachments/assets/9b6a103c-71d7-4367-90c5-5b1442a80310
+
+
+
+
 
 ### 📂 Project Repository Structure
 
